@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema({
     attendedFLights:[{type: mongoose.Schema.Types.ObjectId, ref:'Flight'}]
 })
 
+//Hashing password before saving
 userSchema.pre('save', async function(next){
     if(this.isModified('password')){
         this.password = await bcrypt.hash(this.password, 10)
@@ -16,6 +17,7 @@ userSchema.pre('save', async function(next){
     next()
 })
 
+//Compares passwords
 userSchema.methods.comparePassword = async function(cPassword){
     return await bcrypt.compare(cPassword, this.password)
 }
