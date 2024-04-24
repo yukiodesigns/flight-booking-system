@@ -7,6 +7,6 @@ router.post('/book', authMiddleware, bookFlight)
 router.get('/', getFlight)
 router.post('/confirm-attendance', authMiddleware, confirmAttendance)
 router.post('/confirm-flight', authMiddleware, confirmFlight)
-router('/pay', authMiddleware, paidFlight)
+router.post('/pay', authMiddleware, paidFlight)
 
 module.exports = router

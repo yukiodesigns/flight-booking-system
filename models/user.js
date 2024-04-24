@@ -10,16 +10,16 @@ const userSchema = new mongoose.Schema({
 })
 
 //Hashing password before saving
-userSchema.pre('save', async function(next){
-    if(this.isModified('password')){
-        this.password = await bcrypt.hash(this.password, 10)
-    }
-    next()
-})
+// userSchema.pre('save', async function(next){
+//     if(this.isModified('password')){
+//         this.password = await bcrypt.hash(this.password, 10)
+//     }
+//     next()
+// })
 
 //Compares passwords
-userSchema.methods.comparePassword = async function(cPassword){
-    return await bcrypt.compare(cPassword, this.password)
-}
+// userSchema.methods.comparePassword = async function(cPassword){
+//     return await bcrypt.compare(cPassword, this.password)
+// }
 
 module.exports = mongoose.model('User', userSchema)

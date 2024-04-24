@@ -4,6 +4,10 @@ const auth = require('./routes/auth')
 const flight = require('./routes/flight')
 
 const app = express()
+app.use(express.json())
+
+app.use('/auth', auth)
+app.use('/flight', flight)
 
 mongoose.connect('mongodb://localhost:27017/FlightBookingSystem').then(()=>{ 
     console.log('Connected to Mongodb')

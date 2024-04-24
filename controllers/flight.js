@@ -84,7 +84,7 @@ exports.confirmFlight = async (req, res) =>{
     }
 }
 
-exports.paidFlights = async (req, res) =>{
+exports.paidFlight = async (req, res) =>{
     try {
        const { flightNumber, amount } = req.body;
         const user = await User.findById(req.userId);
@@ -110,6 +110,6 @@ exports.paidFlights = async (req, res) =>{
 
         res.json({ message: 'Payment successful', payment }); 
     } catch (error) {
-        res.json(500).json({message: 'PAyment Failed'})
+        res.json(500).json({message: 'Payment Failed'})
     }
 }
